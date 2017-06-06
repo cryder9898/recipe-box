@@ -2,6 +2,7 @@
   "name": "recipe-box-fcc",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://myusername.github.io/recipe-box",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
     "react": "^15.5.4",
@@ -11,6 +12,7 @@
     "reactstrap": "^4.6.2"
   },
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "react-scripts": "1.0.7"
   },
   "scripts": {
