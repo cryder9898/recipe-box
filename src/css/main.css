@@ -1,4 +1,8 @@
 .app {
   text-align: center; }
 
+.card {
+  max-width: 300px;
+  margin: 2px; }
+
 /*# sourceMappingURL=main.css.map */

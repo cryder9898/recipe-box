@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Container, Row, Col } from 'reactstrap';
+import RecipeCard from './RecipeCard';
 import './css/main.css';
 
 class App extends Component {
@@ -23,7 +25,20 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        App
+        <Container>
+        <h1>Recipe Box</h1>
+          <Row>
+            {this.state.recipes.map((recipe, index)=> {
+              return (
+                <div key={recipe.name}>
+                  <RecipeCard
+                    recipe={recipe}
+                  />
+                </div>
+              );
+            })}
+          </Row>
+        </Container>
       </div>
     );
   }
