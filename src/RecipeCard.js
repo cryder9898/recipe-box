@@ -1,18 +1,18 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBlock, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardImg, CardBlock, CardTitle, Button } from 'reactstrap';
 
-const Example = (props) => {
+const RecipeCard = (props) => {
   return (
     <div>
-      <Card className='card'>
+      <Card className='recipe-card'>
         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
         <CardBlock>
           <CardTitle>{props.recipe.name}</CardTitle>
-          <Button>View</Button>
+          <Button value={props.index} onClick={props.viewRecipe}>View</Button>
         </CardBlock>
       </Card>
     </div>
   );
 };
 
-export default Example;
+export default RecipeCard;
