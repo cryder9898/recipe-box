@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/main.css';
-import { Container, Row, CardColumns} from 'reactstrap';
+import { Container, CardColumns, Button} from 'reactstrap';
 import RecipeCard from './RecipeCard';
 import ViewRecipe from './ViewRecipe';
 
@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       modal: false,
+      edit: false,
       selected: null,
       recipes: [
         {
@@ -34,30 +35,54 @@ class App extends Component {
 
   openView = (e) => {
     console.log('selected: ', e.target.value);
-    this.setState({selected: e.target.value});
+    this.setState({selected: e.target.value, edit: false});
     this.toggle();
+  }
+
+  openAddRecipe = () => {
+    this.setState(() => {
+      return ({edit: true});
+    })
+    this.toggle();
+  }
+
+  addRecipe = (name, list) => {
+    let newRecipeList = this.state.recipeList;
+    this.setState(()=> {
+      let newRecipe = {
+        name: name,
+        ingredients: list,
+      }
+      newRecipeList.push(newRecipe);
+      return {recipeList: newRecipeList};
+    });
   }
 
   render() {
     return (
       <div className="app">
         <h1>Recipe Box</h1>
-          <CardColumns>
-            {this.state.recipes.map((recipe, index)=> {
-              return (
-                <RecipeCard
-                  key={recipe.name}
-                  index={index}
-                  recipe={recipe}
-                  viewRecipe={this.openView}
-                />
-              );
-            })}
-          </CardColumns>
+          <Container>
+            <Button onClick={this.openAddRecipe}>Add</Button>
+            <CardColumns className='card-cols'>
+              {this.state.recipes.map((recipe, index)=> {
+                return (
+                  <RecipeCard
+                    key={recipe.name}
+                    index={index}
+                    recipe={recipe}
+                    viewRecipe={this.openView}
+                  />
+                );
+              })}
+            </CardColumns>
+          </Container>
         <ViewRecipe
+          addEdit={this.state.edit}
           toggle={this.toggle}
           modal={this.state.modal}
           recipe={this.state.recipes[this.state.selected]}
+          onSubmit={this.add}
         />
       </div>
     );
