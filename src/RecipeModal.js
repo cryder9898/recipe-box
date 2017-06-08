@@ -2,10 +2,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, InputGroup, InputGroupAddon } from 'reactstrap';
+import { Form, FormGroup, Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, InputGroup, InputGroupButton } from 'reactstrap';
 
-const ViewRecipe = (props) => {
-  console.log('edit ', props.addEdit);
+class RecipeModal extends Component {
+  
+  render() {
     return (
       <div>
         <Modal isOpen={props.modal} toggle={props.toggle}>
@@ -16,20 +17,22 @@ const ViewRecipe = (props) => {
           { props.addEdit ?
             <Form>
               <FormGroup>
-                <InputGroup>
-                  <Input
-                    type='text'
-                    placeholder='Recipe Name'
-                  />
-                </InputGroup>
+                <Input
+                  id='name'
+                  type='text'
+                  placeholder='Recipe Name'
+                />
               </FormGroup>
               <FormGroup>
                 <InputGroup>
                   <Input
+                    id='ingredients'
                     type='text'
                     placeholder='Ingredients'
                   />
-                  <InputGroupAddon>+</InputGroupAddon>
+                  <InputGroupButton>
+                    <Button>+</Button>
+                  </InputGroupButton>
                 </InputGroup>
               </FormGroup>
             </Form>
@@ -38,26 +41,41 @@ const ViewRecipe = (props) => {
           }
           </ModalBody>
           <ModalFooter>
-            <Button type='submit' color="primary" onClick={props.toggle}>
-            {!props.edit ? 'Add' : 'Edit'}
-            </Button>
+            {props.addEdit ?
+              <Button
+                type='submit'
+                color="primary"
+                onClick={this.handleSubmit}
+              >
+                Save
+              </Button>
+              :
+              <Button
+                color='danger'
+                onClick={props.delete}
+              >
+                Delete
+              </Button>
+            }
             <Button color="secondary" onClick={props.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>
     );
+  }
 }
 
-ViewRecipe.defaultProps = {
+RecipeModal.defaultProps = {
   recipe: {name: '', ingredients: []},
   addEdit: false,
 }
 
-ViewRecipe.propTypes = {
+RecipeModal.propTypes = {
   addEdit: PropTypes.bool.isRequired,
+  delete: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired,
   recipe: PropTypes.object.isRequired,
 }
 
-export default ViewRecipe;
+export default RecipeModal;

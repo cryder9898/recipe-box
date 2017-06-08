@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './css/main.css';
 import { Container, CardColumns, Button} from 'reactstrap';
 import RecipeCard from './RecipeCard';
-import ViewRecipe from './ViewRecipe';
+import RecipeModal from './RecipeModal';
 
 class App extends Component {
   constructor(props) {
@@ -47,14 +47,22 @@ class App extends Component {
   }
 
   addRecipe = (name, list) => {
-    let newRecipeList = this.state.recipeList;
+    let newRecipeList = this.state.recipes;
     this.setState(()=> {
       let newRecipe = {
         name: name,
         ingredients: list,
       }
       newRecipeList.push(newRecipe);
-      return {recipeList: newRecipeList};
+      return {recipes: newRecipeList};
+    });
+  }
+
+  delete = (iIndex) => {
+    let newRecipeList = this.state.recipes;
+    this.setState(()=> {
+      newRecipeList[this.state.selected].ingredients.splice(iIndex, 1);
+      return {recipes: newRecipeList};
     });
   }
 
@@ -71,14 +79,15 @@ class App extends Component {
                     key={recipe.name}
                     index={index}
                     recipe={recipe}
-                    viewRecipe={this.openView}
+                    RecipeModal={this.openView}
                   />
                 );
               })}
             </CardColumns>
           </Container>
-        <ViewRecipe
+        <RecipeModal
           addEdit={this.state.edit}
+          delete={this.delete}
           toggle={this.toggle}
           modal={this.state.modal}
           recipe={this.state.recipes[this.state.selected]}
