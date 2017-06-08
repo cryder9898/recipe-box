@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/main.css';
-import { Container, Row} from 'reactstrap';
+import { Container, Row, CardColumns} from 'reactstrap';
 import RecipeCard from './RecipeCard';
 import ViewRecipe from './ViewRecipe';
 
@@ -42,8 +42,7 @@ class App extends Component {
     return (
       <div className="app">
         <h1>Recipe Box</h1>
-        <Container>
-          <Row>
+          <CardColumns>
             {this.state.recipes.map((recipe, index)=> {
               return (
                 <RecipeCard
@@ -54,8 +53,7 @@ class App extends Component {
                 />
               );
             })}
-          </Row>
-        </Container>
+          </CardColumns>
         <ViewRecipe
           toggle={this.toggle}
           modal={this.state.modal}

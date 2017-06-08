@@ -2,6 +2,7 @@
   text-align: center; }
 
 .recipe-card {
-  margin: 0 auto; }
+  max-width: 300px;
+  margin: 2px; }
 
 /*# sourceMappingURL=main.css.map */
