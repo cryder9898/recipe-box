@@ -1,34 +1,72 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormGroup, Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, InputGroup, InputGroupButton } from 'reactstrap';
+import {
+  Form,
+  FormGroup,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Input,
+  InputGroup,
+  InputGroupButton
+} from 'reactstrap';
 
 class RecipeModal extends Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      list: '',
+    }
+  }
+
+  handleChange = (event) => {
+    if (event.target.name === 'list') {
+      this.setState({list: event.target.value});
+    } else {
+      this.setState({name: event.target.value});
+    }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSubmit(
+      this.state.name,
+      this.state.foodList
+    );
+  }
+
   render() {
     return (
       <div>
-        <Modal isOpen={props.modal} toggle={props.toggle}>
-          <ModalHeader toggle={props.toggle}>
-            {props.addEdit ? 'Add Recipe' : 'View Recipe'}
+        <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
+          <ModalHeader toggle={this.props.toggle}>
+            {this.props.addEdit ? 'Add Recipe' : 'View Recipe'}
           </ModalHeader>
           <ModalBody>
-          { props.addEdit ?
+          { this.props.addEdit ?
             <Form>
               <FormGroup>
                 <Input
-                  id='name'
                   type='text'
+                  name='name'
                   placeholder='Recipe Name'
+                  value={this.state.name}
+                  onChange={this.handleChange}
                 />
               </FormGroup>
               <FormGroup>
                 <InputGroup>
                   <Input
-                    id='ingredients'
                     type='text'
+                    name='list'
                     placeholder='Ingredients'
+                    value={this.state.list}
+                    onChange={this.handleChange}
                   />
                   <InputGroupButton>
                     <Button>+</Button>
@@ -37,11 +75,11 @@ class RecipeModal extends Component {
               </FormGroup>
             </Form>
             :
-            props.recipe.name
+            this.props.recipe.name
           }
           </ModalBody>
           <ModalFooter>
-            {props.addEdit ?
+            {this.props.addEdit ?
               <Button
                 type='submit'
                 color="primary"
@@ -52,12 +90,12 @@ class RecipeModal extends Component {
               :
               <Button
                 color='danger'
-                onClick={props.delete}
+                onClick={this.props.delete}
               >
                 Delete
               </Button>
             }
-            <Button color="secondary" onClick={props.toggle}>Cancel</Button>
+            <Button color="secondary" onClick={this.props.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
       </div>
