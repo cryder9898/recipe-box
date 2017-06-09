@@ -20,6 +20,11 @@ const IngredientList = (props) => {
   );
 }
 
+IngredientList.defaultProps = {
+  name: '',
+  list: [],
+}
+
 IngredientList.propTypes = {
   name: PropTypes.string.isRequired,
   list: PropTypes.array.isRequired,
