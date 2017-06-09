@@ -10,6 +10,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 import RecipeForm from './RecipeForm';
+import IngredientList from './IngredientList';
 
 class RecipeModal extends Component {
 
@@ -26,7 +27,9 @@ class RecipeModal extends Component {
               onSubmit={this.props.onSubmit}
             />
             :
-            this.props.recipe.name
+            <IngredientList
+              recipe={this.props.recipe}
+            />
           }
           </ModalBody>
           <ModalFooter>
