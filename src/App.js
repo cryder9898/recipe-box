@@ -47,6 +47,7 @@ class App extends Component {
   }
 
   addRecipe = (name, list) => {
+    console.log('addRecipe name: ', name);
     let newRecipeList = this.state.recipes;
     this.setState(()=> {
       let newRecipe = {
@@ -58,12 +59,13 @@ class App extends Component {
     });
   }
 
-  delete = (iIndex) => {
+  deleteRecipe = (iIndex) => {
     let newRecipeList = this.state.recipes;
     this.setState(()=> {
-      newRecipeList[this.state.selected].ingredients.splice(iIndex, 1);
+      newRecipeList.splice(this.state.selected, 1);
       return {recipes: newRecipeList};
     });
+    this.toggle();
   }
 
   render() {
@@ -87,11 +89,11 @@ class App extends Component {
           </Container>
         <RecipeModal
           addEdit={this.state.edit}
-          delete={this.delete}
+          delete={this.deleteRecipe}
           toggle={this.toggle}
           modal={this.state.modal}
           recipe={this.state.recipes[this.state.selected]}
-          onSubmit={this.add}
+          onSubmit={this.addRecipe}
         />
       </div>
     );
