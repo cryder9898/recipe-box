@@ -8,9 +8,9 @@ import {
 const IngredientList = (props) => {
   return (
     <div>
-      <h3>{props.recipe.name}</h3>
+      <h3>{props.name}</h3>
       <ListGroup>
-        {props.recipe.ingredients.map((item, index) => {
+        {props.list.map((item, index) => {
             return (
               <ListGroupItem key={item}>{item}</ListGroupItem>
             );
@@ -21,7 +21,8 @@ const IngredientList = (props) => {
 }
 
 IngredientList.propTypes = {
-  recipe: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  list: PropTypes.array.isRequired,
 }
 
 export default IngredientList;
