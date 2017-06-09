@@ -14,13 +14,14 @@ class RecipeForm extends Component {
     super(props);
     this.state = {
       name: '',
-      list: '',
+      list: [],
+      listItem: '',
     }
   }
 
   handleChange = (event) => {
     if (event.target.name === 'list') {
-      this.setState({list: event.target.value});
+      this.setState({listItem: event.target.value});
     } else {
       this.setState({name: event.target.value});
     }
@@ -52,7 +53,7 @@ class RecipeForm extends Component {
               type='text'
               name='list'
               placeholder='Ingredients'
-              value={this.state.list}
+              value={this.state.listItem}
               onChange={this.handleChange}
             />
             <InputGroupButton>
