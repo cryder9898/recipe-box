@@ -65,4 +65,8 @@ class RecipeForm extends Component {
   }
 }
 
+RecipeForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+}
+
 export default RecipeForm;
