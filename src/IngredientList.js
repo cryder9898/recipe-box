@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 
 const IngredientList = (props) => {
+  console.log('IngredientList: props.list: ', props.list);
   return (
     <div>
       <h3>{props.name}</h3>

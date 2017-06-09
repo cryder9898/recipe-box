@@ -24,8 +24,7 @@ class RecipeModal extends Component {
           <ModalBody>
           { this.props.addEdit ?
             <RecipeForm
-              onSubmit={this.props.onSubmit}
-            />
+             onSubmit={this.props.onAdd} />
             :
             <IngredientList
               name={this.props.recipe.name}
@@ -34,21 +33,16 @@ class RecipeModal extends Component {
           }
           </ModalBody>
           <ModalFooter>
-            {this.props.addEdit ?
-              <Button
-                type='submit'
-                color="primary"
-                onClick={this.handleSubmit}
-              >
-                Save
-              </Button>
-              :
-              <Button
-                color='danger'
-                onClick={this.props.delete}
-              >
-                Delete
-              </Button>
+            {!this.props.addEdit &&
+              <span>
+                <Button
+                  color='danger'
+                  onClick={this.props.delete}
+                >
+                  Delete
+                </Button>
+                <Button color='success'>Edit</Button>
+              </span>
             }
             <Button
               color="secondary"

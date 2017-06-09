@@ -57,9 +57,10 @@ class App extends Component {
       newRecipeList.push(newRecipe);
       return {recipes: newRecipeList};
     });
+    this.toggle();
   }
 
-  deleteRecipe = (iIndex) => {
+  deleteRecipe = () => {
     let newRecipeList = this.state.recipes;
     this.setState(()=> {
       newRecipeList.splice(this.state.selected, 1);
@@ -74,14 +75,14 @@ class App extends Component {
         <h1>Recipe Box</h1>
           <Container>
             <Button onClick={this.openAddRecipe}>Add</Button>
-            <CardColumns className='card-cols'>
+            <CardColumns>
               {this.state.recipes.map((recipe, index)=> {
                 return (
                   <RecipeCard
                     key={recipe.name}
                     index={index}
                     recipe={recipe}
-                    RecipeModal={this.openView}
+                    viewContents={this.openView}
                   />
                 );
               })}
@@ -93,7 +94,7 @@ class App extends Component {
           toggle={this.toggle}
           modal={this.state.modal}
           recipe={this.state.recipes[this.state.selected]}
-          onSubmit={this.addRecipe}
+          onAdd={this.addRecipe}
         />
       </div>
     );
