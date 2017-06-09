@@ -28,7 +28,8 @@ class RecipeModal extends Component {
             />
             :
             <IngredientList
-              recipe={this.props.recipe}
+              name={this.props.recipe.name}
+              list={this.props.recipe.ingredients}
             />
           }
           </ModalBody>
