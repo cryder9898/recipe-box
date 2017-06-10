@@ -5,13 +5,14 @@ import {
   ListGroupItem,
 } from 'reactstrap';
 
-const IngredientList = (props) => {
-  console.log('IngredientList: props.list: ', props.list);
+const IngredientList = ({name, ingredients}) => {
+  console.log('IngredientList: name: ', name);
+  console.log('IngredientList: ingredients: ', ingredients);
   return (
     <div>
-      <h3>{props.name}</h3>
+      <h3>{name}</h3>
       <ListGroup>
-        {props.list.map((item, index) => {
+        {ingredients.map((item, index) => {
             return (
               <ListGroupItem key={item}>{item}</ListGroupItem>
             );
@@ -23,12 +24,11 @@ const IngredientList = (props) => {
 
 IngredientList.defaultProps = {
   name: '',
-  list: [],
+  ingredients: [],
 }
 
 IngredientList.propTypes = {
-  name: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
+  ingredients: PropTypes.array.isRequired,
 }
 
 export default IngredientList;
