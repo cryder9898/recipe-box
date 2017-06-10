@@ -33,7 +33,18 @@ class RecipeForm extends Component {
     }
   }
 
+  addItemtoList = () => {
+    if (this.state.listItem !== '') {
+      let arr = this.state.list;
+      arr.push(this.state.listItem);
+      this.setState({list: arr, listItem:''});
+      console.log('RecipeForm: this.state.list = ', this.state.list);
+    }
+  }
+
   render() {
+    const len = this.state.list.length;
+    const listItem = this.state.list[len];
     return (
       <div>
         <Form>
@@ -56,14 +67,7 @@ class RecipeForm extends Component {
                 onChange={this.handleChange}
               />
               <InputGroupButton>
-                <Button onClick={() => {
-                  if (this.state.listItem !== '') {
-                    let arr = this.state.list;
-                    arr.push(this.state.listItem);
-                    this.setState({list: arr, listItem:''});
-                    console.log('RecipeForm: this.state.list = ', this.state.list);
-                  }}}
-                >
+                <Button onClick={this.addItemtoList}>
                   +
                 </Button>
               </InputGroupButton>
@@ -77,12 +81,10 @@ class RecipeForm extends Component {
             Save
           </Button>
         </Form>
-        {this.state.list &&
-          <IngredientList
-            name={this.state.name}
-            ingredients={this.state.list}
-          />
-        }
+        <IngredientList
+          name={this.state.name}
+          ingredients={this.state.list}
+        />
       </div>
     );
   }
