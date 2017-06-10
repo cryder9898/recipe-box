@@ -24,7 +24,8 @@ class RecipeModal extends Component {
           <ModalBody>
           { this.props.addEdit ?
             <RecipeForm
-             onSubmit={this.props.onAdd} />
+             onSubmit={this.props.onAdd}
+            />
             :
             <IngredientList
               name={this.props.recipe.name}
