@@ -19,12 +19,14 @@ class RecipeModal extends Component {
       <div>
         <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
           <ModalHeader toggle={this.props.toggle}>
-            {this.props.addEdit ? 'Add Recipe' : 'View Recipe'}
+            {this.props.isEdit ? 'Add Recipe' : 'View Recipe'}
           </ModalHeader>
           <ModalBody>
-          { this.props.addEdit ?
+          { this.props.isEdit ?
             <RecipeForm
-             onSubmit={this.props.onAdd}
+              isEdit={this.props.isEdit}
+              recipe={this.props.recipe}
+              onSubmit={this.props.onAdd}
             />
             :
             <IngredientList
@@ -34,7 +36,7 @@ class RecipeModal extends Component {
           }
           </ModalBody>
           <ModalFooter>
-            {!this.props.addEdit &&
+            {!this.props.isEdit &&
               <span>
                 <Button
                   color='danger'
@@ -42,7 +44,12 @@ class RecipeModal extends Component {
                 >
                   Delete
                 </Button>
-                <Button color='success'>Edit</Button>
+                <Button
+                  color='success'
+                  onClick={this.props.edit}
+                >
+                  Edit
+                </Button>
               </span>
             }
             <Button
@@ -60,11 +67,11 @@ class RecipeModal extends Component {
 
 RecipeModal.defaultProps = {
   recipe: {name: '', ingredients: []},
-  addEdit: false,
+  isEdit: false,
 }
 
 RecipeModal.propTypes = {
-  addEdit: PropTypes.bool.isRequired,
+  isEdit: PropTypes.bool.isRequired,
   delete: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
   modal: PropTypes.bool.isRequired,

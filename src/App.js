@@ -69,6 +69,10 @@ class App extends Component {
     this.toggle();
   }
 
+  toggleEdit = () => {
+    this.setState({edit: true});
+  }
+
   render() {
     return (
       <div className="app">
@@ -89,7 +93,8 @@ class App extends Component {
           </CardColumns>
         </Container>
         <RecipeModal
-          addEdit={this.state.edit}
+          edit={this.toggleEdit}
+          isEdit={this.state.edit}
           delete={this.deleteRecipe}
           toggle={this.toggle}
           modal={this.state.modal}

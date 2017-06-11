@@ -14,8 +14,8 @@ class RecipeForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      list: [],
+      name: this.props.recipe.name,
+      list: this.props.recipe.ingredients,
       listItem: '',
     }
   }
@@ -85,6 +85,13 @@ class RecipeForm extends Component {
         />
       </div>
     );
+  }
+}
+
+RecipeForm.defaultProps = {
+  recipe: {
+    name: '',
+    ingredients: [],
   }
 }
 
