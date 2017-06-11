@@ -43,8 +43,6 @@ class RecipeForm extends Component {
   }
 
   render() {
-    const len = this.state.list.length;
-    const listItem = this.state.list[len];
     return (
       <div>
         <Form>
@@ -88,6 +86,10 @@ class RecipeForm extends Component {
       </div>
     );
   }
+}
+
+RecipeForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default RecipeForm;

@@ -73,21 +73,21 @@ class App extends Component {
     return (
       <div className="app">
         <h1>Recipe Box</h1>
-          <Container>
-            <Button onClick={this.openAddRecipe}>Add</Button>
-            <CardColumns>
-              {this.state.recipes.map((recipe, index)=> {
-                return (
-                  <RecipeCard
-                    key={recipe.name}
-                    index={index}
-                    recipe={recipe}
-                    viewContents={this.openView}
-                  />
-                );
-              })}
-            </CardColumns>
-          </Container>
+        <Container>
+          <Button onClick={this.openAddRecipe}>Add</Button>
+          <CardColumns>
+            {this.state.recipes.map((recipe, index)=> {
+              return (
+                <RecipeCard
+                  key={recipe.name}
+                  index={index}
+                  recipe={recipe}
+                  viewContents={this.openView}
+                />
+              );
+            })}
+          </CardColumns>
+        </Container>
         <RecipeModal
           addEdit={this.state.edit}
           delete={this.deleteRecipe}
