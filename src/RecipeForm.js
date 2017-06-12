@@ -42,6 +42,10 @@ class RecipeForm extends Component {
     }
   }
 
+  removeIngredient = (index) => {
+    console.log(index);
+  }
+
   render() {
     return (
       <div>
@@ -80,6 +84,8 @@ class RecipeForm extends Component {
           </Button>
         </Form>
         <IngredientList
+          isEdit={this.props.isEdit}
+          removeIngredient={this.removeIngredient}
           name={this.state.name}
           ingredients={this.state.list}
         />
@@ -91,7 +97,8 @@ class RecipeForm extends Component {
 RecipeForm.defaultProps = {
   recipe: {
     name: '',
-    ingredients: [],
+    list: [],
+    listItem: '',
   }
 }
 
