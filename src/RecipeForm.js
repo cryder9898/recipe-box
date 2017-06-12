@@ -36,7 +36,7 @@ class RecipeForm extends Component {
   addItemtoList = () => {
     if (this.state.listItem !== '') {
       let arr = this.state.list;
-      arr.push(this.state.listItem);
+      arr.unshift(this.state.listItem);
       this.setState({list: arr, listItem:''});
       console.log('RecipeForm: this.state.list = ', this.state.list);
     }

@@ -52,7 +52,7 @@ class App extends Component {
         name: name,
         ingredients: list,
       }
-      newRecipeList.push(newRecipe);
+      newRecipeList.unshift(newRecipe);
       return {recipes: newRecipeList};
     });
     this.toggle();
