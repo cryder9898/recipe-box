@@ -40,9 +40,7 @@ class App extends Component {
   }
 
   openAddRecipe = () => {
-    this.setState(() => {
-      return ({edit: true});
-    })
+    this.setState({edit: true, selected: null});
     this.toggle();
   }
 
