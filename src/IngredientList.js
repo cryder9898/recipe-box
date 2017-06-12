@@ -3,18 +3,33 @@ import PropTypes from 'prop-types';
 import {
   ListGroup,
   ListGroupItem,
+  Button,
 } from 'reactstrap';
 
-const IngredientList = ({name, ingredients}) => {
-  console.log('IngredientList: name: ', name);
-  console.log('IngredientList: ingredients: ', ingredients);
+const IngredientList = (props) => {
   return (
     <div>
-      <h3>{name}</h3>
+      <h3>{props.name}</h3>
       <ListGroup>
-        {ingredients.map((item, index) => {
+        {props.ingredients.map((item, index) => {
             return (
-              <ListGroupItem key={item}>{item}</ListGroupItem>
+              <ListGroupItem key={item}>
+                <div className='align-left'>
+                  {item}
+                </div>
+                {props.isEdit &&
+                  <div className='align-right'>
+                    <Button
+                      type='button'
+                      className='align-right'
+                      color='danger'
+                      onClick={props.removeIngredient(index)}
+                    >
+                      X
+                    </Button>
+                  </div>
+                }
+              </ListGroupItem>
             );
           })}
       </ListGroup>
@@ -28,6 +43,7 @@ IngredientList.defaultProps = {
 }
 
 IngredientList.propTypes = {
+  name: PropTypes.string.isRequired,
   ingredients: PropTypes.array.isRequired,
 }
 
