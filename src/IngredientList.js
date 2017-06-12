@@ -21,9 +21,10 @@ const IngredientList = (props) => {
                   <div className='align-right'>
                     <Button
                       type='button'
+                      value={index}
                       className='align-right'
                       color='danger'
-                      onClick={props.removeIngredient(index)}
+                      onClick={props.removeIngredient}
                     >
                       X
                     </Button>

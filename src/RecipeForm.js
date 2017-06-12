@@ -42,8 +42,12 @@ class RecipeForm extends Component {
     }
   }
 
-  removeIngredient = (index) => {
-    console.log(index);
+  removeIngredient = (event) => {
+    let index = event.target.value;
+    console.log('removeIngredient: ', index);
+    let list = this.state.list;
+    list.splice(index, 1);
+    this.setState({list: list});
   }
 
   render() {
