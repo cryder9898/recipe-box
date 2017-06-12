@@ -4,4 +4,12 @@
 .recipe-card {
   margin: 5px; }
 
+.align-left {
+  float: left;
+  width: 50%; }
+
+.align-right {
+  float: right;
+  width: 50%; }
+
 /*# sourceMappingURL=main.css.map */
