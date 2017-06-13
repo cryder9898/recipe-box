@@ -86,13 +86,13 @@ class RecipeForm extends Component {
           >
             Save
           </Button>
+          <IngredientList
+            isEdit={this.props.isEdit}
+            removeIngredient={this.removeIngredient}
+            name={this.state.name}
+            ingredients={this.state.list}
+          />
         </Form>
-        <IngredientList
-          isEdit={this.props.isEdit}
-          removeIngredient={this.removeIngredient}
-          name={this.state.name}
-          ingredients={this.state.list}
-        />
       </div>
     );
   }
