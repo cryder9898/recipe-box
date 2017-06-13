@@ -11,19 +11,7 @@ class App extends Component {
       modal: false,
       edit: false,
       selected: null,
-      recipes: [
-        {
-          name: 'Chicken Parmesean',
-          ingredients: ['Chicken Breast', 'Parmesean Cheese', 'Tomato Sauce', 'Bread Crumbs'],
-        },
-        {
-          name: 'Sweet Potato Pie',
-          ingredients: ['Sweet Potatoes', 'Pie Crust', 'Sugar', 'Cinnamon'],
-        },
-        {
-          name: "Pasta Salad",
-          ingredients: ['Pasta', 'celery', 'bacon', 'italian dressing', 'tomato'],
-        }],
+      recipes: this.props.recipes,
     }
   }
 
