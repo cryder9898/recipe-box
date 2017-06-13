@@ -22,7 +22,9 @@ class RecipeForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit(this.state.name, this.state.list);
+    if (this.state.name !== '') {
+      this.props.onSubmit(this.state.name, this.state.list);
+    }
   }
 
   handleChange = (event) => {
