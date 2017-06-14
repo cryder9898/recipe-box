@@ -96,9 +96,13 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1>Recipe Box</h1>
         <Container>
-          <Button onClick={this.openAddRecipe}>Add</Button>
+        <h1>Recipe Box</h1>
+          <div className='button-space'>
+            <Button color='primary' onClick={this.openAddRecipe}>
+              Add
+            </Button>
+          </div>
           <CardColumns>
             {this.state.recipes.map((recipe, index)=> {
               return (

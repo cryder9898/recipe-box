@@ -38,17 +38,17 @@ if (storageAvailable('localStorage')) {
     recipes = [
       {
         name: 'Chicken Parmesean',
-        image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
+        image: 'http://img.sndimg.com/food/image/upload/h_420,w_560,c_fit/v1/img/recipes/19/13/5/AKvKcJgQWqe5WpAZ4bTu_chicken-parmesan-5.jpg',
         ingredients: ['Chicken Breast', 'Parmesean Cheese', 'Tomato Sauce', 'Bread Crumbs'],
       },
       {
         name: 'Sweet Potato Pie',
-        image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
+        image: 'http://cdn2.tmbi.com/TOH/Images/Photos/37/300x300/exps1203_TH1604C17.jpg',
         ingredients: ['Sweet Potatoes', 'Pie Crust', 'Sugar', 'Cinnamon'],
       },
       {
         name: "Pasta Salad",
-        image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
+        image: 'http://cdn.pinchofyum.com/wp-content/uploads/Best-Easy-Pasta-Salad-1.jpg',
         ingredients: ['Pasta', 'celery', 'bacon', 'italian dressing', 'tomato'],
       }
     ];

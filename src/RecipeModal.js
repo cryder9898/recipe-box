@@ -33,7 +33,7 @@ const RecipeModal = (props) => {
           />
           :
           <div>
-            <img src={props.recipe.image} alt='recipe' />
+            <img className='image-modal' src={props.recipe.image} alt='recipe' />
             <IngredientList
               name={props.recipe.name}
               ingredients={props.recipe.ingredients}
