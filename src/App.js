@@ -46,7 +46,7 @@ class App extends Component {
     this.toggle();
   }
 
-  editRecipe = (name, list) => {
+  editRecipe = (name, image, list) => {
     console.log('Editing Recipe!!!');
     console.log('editRecipe:  name: ', name);
     console.log('editRecipe: edit = ', this.state.edit);
@@ -54,6 +54,7 @@ class App extends Component {
     this.setState(()=> {
       let newRecipe = {
         name: name,
+        image: image,
         ingredients: list,
       }
       newRecipeList[this.state.selected] = newRecipe;
@@ -63,7 +64,7 @@ class App extends Component {
     this.toggle();
   }
 
-  addRecipe = (name, list) => {
+  addRecipe = (name, image, list) => {
     console.log('Adding New Recipe!!!');
     console.log('addRecipe: name= ', name);
     console.log('addRecipe: edit= ', this.state.edit);
@@ -71,6 +72,7 @@ class App extends Component {
     this.setState(()=> {
       let newRecipe = {
         name: name,
+        image: image,
         ingredients: list,
       }
       newRecipeList.unshift(newRecipe);
@@ -118,7 +120,7 @@ class App extends Component {
           modal={this.state.modal}
           recipe={
             this.state.selected === null ?
-            {name: '', ingredients: []} :
+            {name: '', image: '', ingredients: []} :
             this.state.recipes[this.state.selected]
           }
           addRecipe={this.addRecipe}

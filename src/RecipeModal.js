@@ -32,10 +32,13 @@ const RecipeModal = (props) => {
             onSubmit={isAdd ? props.addRecipe : props.editRecipe}
           />
           :
-          <IngredientList
-            name={props.recipe.name}
-            ingredients={props.recipe.ingredients}
-          />
+          <div>
+            <img src={props.recipe.image} alt='recipe' />
+            <IngredientList
+              name={props.recipe.name}
+              ingredients={props.recipe.ingredients}
+            />
+          </div>
         }
         </ModalBody>
         <ModalFooter>
@@ -68,7 +71,7 @@ const RecipeModal = (props) => {
 }
 
 RecipeModal.defaultProps = {
-  recipe: {name: '', ingredients: []},
+  recipe: {name: '', image: '', ingredients: []},
 }
 
 RecipeModal.propTypes = {

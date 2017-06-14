@@ -38,20 +38,23 @@ if (storageAvailable('localStorage')) {
     recipes = [
       {
         name: 'Chicken Parmesean',
+        image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
         ingredients: ['Chicken Breast', 'Parmesean Cheese', 'Tomato Sauce', 'Bread Crumbs'],
       },
       {
         name: 'Sweet Potato Pie',
+        image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
         ingredients: ['Sweet Potatoes', 'Pie Crust', 'Sugar', 'Cinnamon'],
       },
       {
         name: "Pasta Salad",
+        image: 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
         ingredients: ['Pasta', 'celery', 'bacon', 'italian dressing', 'tomato'],
       }
     ];
     localStorage.setItem('recipes', JSON.stringify(recipes));
 } else {
-    console.log('localStorage  YESS!!');
+    console.log('recipes are in localStorage!!');
     recipes = JSON.parse(localStorage.getItem('recipes'));
   }
 } else {

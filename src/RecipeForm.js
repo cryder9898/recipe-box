@@ -15,6 +15,7 @@ class RecipeForm extends Component {
     super(props);
     this.state = {
       name: this.props.recipe.name,
+      image: this.props.recipe.image,
       list: this.props.recipe.ingredients,
       listItem: '',
     }
@@ -23,15 +24,26 @@ class RecipeForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.name !== '') {
-      this.props.onSubmit(this.state.name, this.state.list);
+      this.props.onSubmit(
+        this.state.name,
+        this.state.image,
+        this.state.list
+      );
     }
   }
 
   handleChange = (event) => {
-    if (event.target.name === 'listItem') {
-      this.setState({listItem: event.target.value});
-    } else {
-      this.setState({name: event.target.value});
+    let name = event.target.name;
+    switch(name) {
+      case 'listItem':
+        this.setState({listItem: event.target.value});
+        break;
+      case 'name':
+        this.setState({name: event.target.value});
+        break;
+      case 'image':
+        this.setState({image: event.target.value});
+        break;
     }
   }
 
@@ -62,6 +74,13 @@ class RecipeForm extends Component {
               name='name'
               placeholder='Recipe Name'
               value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <Input
+              type='text'
+              name='image'
+              placeholder='Image src'
+              value={this.state.image}
               onChange={this.handleChange}
             />
           </FormGroup>
@@ -103,6 +122,7 @@ class RecipeForm extends Component {
 RecipeForm.defaultProps = {
   recipe: {
     name: '',
+    image: '',
     list: [],
     listItem: '',
   }
